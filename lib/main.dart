@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/constans.dart';
+import 'package:bookly/feature/auth/presentation/login_view.dart';
 import 'package:bookly/feature/onboarding/presentation/page_view_onboarding.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kPrimryColor
       ),
       home: PageViewOnboarding(),
+      routes: {
+        LoginView.routeName :(context)=> const LoginView(),
+      },
     );
   }
 }

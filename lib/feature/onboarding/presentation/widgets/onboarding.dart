@@ -11,7 +11,6 @@ class Onboarding extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Skip"),
         Image.asset(imagePath),
         SizedBox(height: 30),
         CustomText(text: title, fontSize: 20),

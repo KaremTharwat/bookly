@@ -1,4 +1,6 @@
 import 'package:bookly/core/utils/constans.dart';
+import 'package:bookly/feature/auth/presentation/login_view.dart';
+import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -31,18 +33,24 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: kPrimryColor,
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.pushNamed(context, LoginView.routeName);
+            },
+            child: CustomText(text: "Skip", fontSize: 22),
+          ),
+        ],
+      ),
       body: PageView(
         controller: controller,
-        onPageChanged: (index){
-          if(index <= 3)
-          {
-             setState(() {
-            currentPage = index +1; 
-          });
-          }else{
-           // Navigator.pushNamed(context, routeName)
+        onPageChanged: (index) {
+          if (index < 3) {
+            currentPage = index + 1;
+            setState(() {});
           }
-         
         },
         children: [
           Onboarding(
@@ -83,6 +91,9 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                   duration: Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
+                if (currentPage == 3) {
+                  Navigator.pushNamed(context, LoginView.routeName);
+                }
               },
               child: CircleAvatar(
                 radius: 25,
