@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/constans.dart';
-import 'package:bookly/feature/splash/presentation/splash_view.dart';
+import 'package:bookly/feature/onboarding/presentation/page_view_onboarding.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: kPrimryColor
       ),
-      home: const SplashView(),
+      home: PageViewOnboarding(),
     );
   }
 }
