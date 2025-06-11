@@ -1,6 +1,8 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/feature/auth/data/create_user_with_email_password.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_button.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_textformfeild.dart';
+import 'package:bookly/feature/home/presentation/home_view.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,10 @@ class _SignupViewState extends State<SignupView> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   dynamic confirmPassword;
   bool isObsecure = true;
+  String? email;
+  String? password;
+  String? phone;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,9 +29,9 @@ class _SignupViewState extends State<SignupView> {
           Image.asset(Assets.signUp, height: 250),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 12),
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(24),
@@ -37,12 +43,12 @@ class _SignupViewState extends State<SignupView> {
                   key: formKey,
                   child: Column(
                     children: [
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Row(
+                        child: const Row(
                           children: [
                             Icon(Icons.arrow_back, color: Colors.grey),
                             CustomText(
@@ -53,7 +59,7 @@ class _SignupViewState extends State<SignupView> {
                           ],
                         ),
                       ),
-                      Align(
+                      const Align(
                         alignment: Alignment.centerLeft,
                         child: CustomText(
                           text: "Sign Up",
@@ -64,6 +70,7 @@ class _SignupViewState extends State<SignupView> {
                       ),
                       CustomTextFormField(
                         validator: (value) {
+                          email = value;
                           if (value!.isEmpty) {
                             return "Email is required";
                           }
@@ -73,13 +80,14 @@ class _SignupViewState extends State<SignupView> {
                         keyboardType: TextInputType.emailAddress,
                         suffixIcon: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.email),
+                          icon: const Icon(Icons.email),
                         ),
                       ),
                       CustomTextFormField(
                         obsecure: isObsecure,
                         validator: (value) {
                           confirmPassword = value;
+                          password = value;
                           if (value!.isEmpty) {
                             return "password is required";
                           } else if (value.length < 6) {
@@ -96,8 +104,8 @@ class _SignupViewState extends State<SignupView> {
                           },
                           icon:
                               isObsecure
-                                  ? Icon(Icons.lock)
-                                  : Icon(Icons.lock_open),
+                                  ? const Icon(Icons.lock)
+                                  : const Icon(Icons.lock_open),
                         ),
                       ),
                       CustomTextFormField(
@@ -123,16 +131,35 @@ class _SignupViewState extends State<SignupView> {
                         keyboardType: TextInputType.phone,
                         suffixIcon: IconButton(
                           onPressed: () {},
-                          icon: Icon(Icons.phone),
+                          icon: const Icon(Icons.phone),
                         ),
                       ),
-                      SizedBox(height: 30),
-                      CustomElevatedButton(
-                        text: "Sign Up",
-                        onPressed: () {
-                          if (formKey.currentState!.validate()) {}
-                        },
-                      ),
+                      const SizedBox(height: 30),
+
+                      isLoading
+                          ? const CircularProgressIndicator()
+                          : CustomElevatedButton(
+                            text: "Sign Up",
+                            onPressed: () async {
+                              if (formKey.currentState!.validate()) {
+                                isLoading = true;
+                                setState(() {});
+                                await createUserWithEmailAndPassword(
+                                  email,
+                                  password,
+                                  context,
+                                );
+                                isLoading = false;
+                                if (context.mounted) {
+                                  Navigator.pushNamedAndRemoveUntil(
+                                    context,
+                                    HomeView.routeName,
+                                    (route) => false,
+                                  );
+                                }
+                              }
+                            },
+                          ),
                     ],
                   ),
                 ),

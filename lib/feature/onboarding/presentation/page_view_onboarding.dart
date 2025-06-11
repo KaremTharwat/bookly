@@ -41,7 +41,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
             onPressed: () {
               Navigator.pushNamed(context, LoginView.routeName);
             },
-            child: CustomText(text: "Skip", fontSize: 22),
+            child:const CustomText(text: "Skip", fontSize: 22),
           ),
         ],
       ),
@@ -53,7 +53,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
             setState(() {});
           }
         },
-        children: [
+        children:const [
           Onboarding(
             imagePath: Assets.onboarding1,
             title: "Welcome to Your Personal Library",
@@ -75,7 +75,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
         ],
       ),
       bottomSheet: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding:const EdgeInsets.symmetric(horizontal: 30),
         height: 60,
         color: kPrimryColor,
         child: Row(
@@ -83,13 +83,13 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
             SmoothPageIndicator(
               controller: controller,
               count: 3,
-              effect: WormEffect(),
+              effect:const WormEffect(),
             ),
-            Spacer(),
+           const Spacer(),
             InkWell(
               onTap: () {
                 controller.nextPage(
-                  duration: Duration(milliseconds: 300),
+                  duration:const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
                 );
                 if (currentPage == 3) {
@@ -104,8 +104,8 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                 radius: 25,
                 child:
                     currentPage == 3
-                        ? Text("Start")
-                        : Icon(Icons.arrow_forward, size: 35),
+                        ?const Text("Start")
+                        :const Icon(Icons.arrow_forward, size: 35),
               ),
             ),
           ],

@@ -16,19 +16,22 @@ class _LoginViewState extends State<LoginView> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool isSecure = true;
   bool ischeck = false;
+  bool isLoading = false;
+  String? email;
+  String? password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Image(image: AssetImage(Assets.login)),
-            SizedBox(height: 30),
+           const Image(image: AssetImage(Assets.login)),
+           const SizedBox(height: 30),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(12),
+                padding:const EdgeInsets.all(12),
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration:const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
@@ -40,21 +43,22 @@ class _LoginViewState extends State<LoginView> {
                     key: formKey,
                     child: Column(
                       children: [
-                        CustomText(
+                       const CustomText(
                           text: "Welcome Back",
                           fontSize: 24,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
-                        CustomText(
+                       const CustomText(
                           text: "Sign in to begin your journey through words",
                           fontSize: 14,
-                          color: const Color.fromARGB(255, 37, 37, 37),
+                          color: Color.fromARGB(255, 37, 37, 37),
                         ),
                         CustomTextFormField(
                           keyboardType: TextInputType.emailAddress,
                           label: "Email",
                           validator: (value) {
+                            email = value;
                             if (value!.isEmpty) {
                               return "Email is required";
                             }
@@ -63,6 +67,7 @@ class _LoginViewState extends State<LoginView> {
                         ),
                         CustomTextFormField(
                           validator: (value) {
+                            password = value;
                             if (value!.isEmpty) {
                               return "password is required";
                             }
@@ -77,8 +82,8 @@ class _LoginViewState extends State<LoginView> {
                             },
                             icon:
                                 isSecure
-                                    ? Icon(Icons.lock_outline)
-                                    : Icon(Icons.lock_open_outlined),
+                                    ?const Icon(Icons.lock_outline)
+                                    :const Icon(Icons.lock_open_outlined),
                           ),
                         ),
                         Row(
@@ -91,11 +96,11 @@ class _LoginViewState extends State<LoginView> {
                                 });
                               },
                             ),
-                            Text("Remember Me"),
-                            Spacer(),
+                          const  Text("Remember Me"),
+                           const Spacer(),
                             TextButton(
                               onPressed: () {},
-                              child: Text("Forget passowrd"),
+                              child:const Text("Forget passowrd"),
                             ),
                           ],
                         ),
@@ -107,7 +112,7 @@ class _LoginViewState extends State<LoginView> {
                         },
                         text: "Login",
                         ),
-                        Row(
+                      const  Row(
                           children: [
                             Expanded(
                               child: Divider(thickness: 2, endIndent: 10),
@@ -120,10 +125,10 @@ class _LoginViewState extends State<LoginView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Dont have an account?"),
+                          const  Text("Dont have an account?"),
                             TextButton(
                               onPressed: () {},
-                              child: Text("Sign Up"),
+                              child:const Text("Sign Up"),
                             ),
                           ],
                         ),
