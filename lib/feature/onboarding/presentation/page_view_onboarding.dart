@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/core/utils/constans.dart';
 import 'package:bookly/feature/auth/presentation/login_view.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
@@ -7,7 +8,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PageViewOnboarding extends StatefulWidget {
   const PageViewOnboarding({super.key});
-
+static const String routeName="PageViewOnboarding";
   @override
   State<PageViewOnboarding> createState() => _PageViewOnboardingState();
 }
@@ -54,19 +55,19 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
         },
         children: [
           Onboarding(
-            imagePath: "assets/onboardin1.png",
+            imagePath: Assets.onboarding1,
             title: "Welcome to Your Personal Library",
             des:
                 "Discover thousands of books across every genre, anytime and anywhere",
           ),
           Onboarding(
-            imagePath: "assets/onboarding2.png",
+            imagePath: Assets.onboarding2,
             title: "Customize Your Reading Experience",
             des:
                 "Adjust fonts, switch themes, and organize your bookshelf just the way you like it",
           ),
           Onboarding(
-            imagePath: "assets/onboarding3.png",
+            imagePath: Assets.onboarding3,
             title: "Begin Your Book Journey",
             des:
                 "From bestselling novels to self-help gems — read what inspires you, one page at a time",
@@ -92,7 +93,11 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                   curve: Curves.easeInOut,
                 );
                 if (currentPage == 3) {
-                  Navigator.pushNamed(context, LoginView.routeName);
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    LoginView.routeName,
+                    (route) => false,
+                  );
                 }
               },
               child: CircleAvatar(
