@@ -14,6 +14,7 @@ class SignupView extends StatefulWidget {
 class _SignupViewState extends State<SignupView> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   dynamic confirmPassword;
+  bool isObsecure = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +39,9 @@ class _SignupViewState extends State<SignupView> {
                     children: [
                       SizedBox(height: 20),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                         child: Row(
                           children: [
                             Icon(Icons.arrow_back, color: Colors.grey),
@@ -74,6 +77,7 @@ class _SignupViewState extends State<SignupView> {
                         ),
                       ),
                       CustomTextFormField(
+                        obsecure: isObsecure,
                         validator: (value) {
                           confirmPassword = value;
                           if (value!.isEmpty) {
@@ -85,15 +89,23 @@ class _SignupViewState extends State<SignupView> {
                         },
                         label: "password",
                         suffixIcon: IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.lock),
+                          onPressed: () {
+                            setState(() {
+                              isObsecure = !isObsecure;
+                            });
+                          },
+                          icon:
+                              isObsecure
+                                  ? Icon(Icons.lock)
+                                  : Icon(Icons.lock_open),
                         ),
                       ),
                       CustomTextFormField(
+                        obsecure: isObsecure,
                         label: "confirm password",
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return "Email is required";
+                            return "confirm is required";
                           } else if (value != confirmPassword) {
                             return "passwords do not match";
                           }
