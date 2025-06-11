@@ -1,5 +1,5 @@
 import 'package:bookly/core/utils/assets.dart';
-import 'package:bookly/core/utils/constans.dart';
+import 'package:bookly/feature/auth/presentation/widget/custom_button.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_textformfeild.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +52,7 @@ class _LoginViewState extends State<LoginView> {
                           color: const Color.fromARGB(255, 37, 37, 37),
                         ),
                         CustomTextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           label: "Email",
                           validator: (value) {
                             if (value!.isEmpty) {
@@ -69,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                           },
                           obsecure: isSecure,
                           label: "Password",
-                          iconButton: IconButton(
+                          suffixIcon: IconButton(
                             onPressed: () {
                               isSecure = !isSecure;
                               setState(() {});
@@ -98,19 +99,13 @@ class _LoginViewState extends State<LoginView> {
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {}
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: kPrimryColor,
-                              elevation: 6,
-                              shadowColor: kPrimryColor,
-                            ),
-                            child: CustomText(text: "Login", fontSize: 16),
-                          ),
+                        CustomElevatedButton(onPressed: (){
+                          if(formKey.currentState!.validate())
+                          {
+
+                          }
+                        },
+                        text: "Login",
                         ),
                         Row(
                           children: [
@@ -144,3 +139,4 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
+

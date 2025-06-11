@@ -4,24 +4,28 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.label,
-    this.iconButton,
-    this.obsecure = false, this.validator,
+    this.suffixIcon,
+    this.obsecure = false,
+    this.validator,
+    this.keyboardType = TextInputType.text,
   });
   final String label;
-  final IconButton? iconButton;
+  final IconButton? suffixIcon;
   final bool obsecure;
   final String? Function(String?)? validator;
+  final TextInputType keyboardType;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 18),
       child: TextFormField(
-        validator:validator ,
+        keyboardType: keyboardType,
+        validator: validator,
         obscureText: obsecure,
         decoration: InputDecoration(
           label: Text(label),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
-          suffixIcon: iconButton,
+          suffixIcon: suffixIcon,
         ),
       ),
     );
