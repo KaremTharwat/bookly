@@ -1,6 +1,9 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/feature/auth/data/signin_with_email_and_password.dart';
+import 'package:bookly/feature/auth/presentation/signup_view.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_button.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_textformfeild.dart';
+import 'package:bookly/feature/home/presentation/home_view.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
 import 'package:flutter/material.dart';
 
@@ -25,13 +28,13 @@ class _LoginViewState extends State<LoginView> {
       body: SafeArea(
         child: Column(
           children: [
-           const Image(image: AssetImage(Assets.login)),
-           const SizedBox(height: 30),
+            const Image(image: AssetImage(Assets.login)),
+            const SizedBox(height: 30),
             Expanded(
               child: Container(
-                padding:const EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 width: double.infinity,
-                decoration:const BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
@@ -43,13 +46,13 @@ class _LoginViewState extends State<LoginView> {
                     key: formKey,
                     child: Column(
                       children: [
-                       const CustomText(
+                        const CustomText(
                           text: "Welcome Back",
                           fontSize: 24,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
-                       const CustomText(
+                        const CustomText(
                           text: "Sign in to begin your journey through words",
                           fontSize: 14,
                           color: Color.fromARGB(255, 37, 37, 37),
@@ -82,8 +85,8 @@ class _LoginViewState extends State<LoginView> {
                             },
                             icon:
                                 isSecure
-                                    ?const Icon(Icons.lock_outline)
-                                    :const Icon(Icons.lock_open_outlined),
+                                    ? const Icon(Icons.lock_outline)
+                                    : const Icon(Icons.lock_open_outlined),
                           ),
                         ),
                         Row(
@@ -96,23 +99,38 @@ class _LoginViewState extends State<LoginView> {
                                 });
                               },
                             ),
-                          const  Text("Remember Me"),
-                           const Spacer(),
+                            const Text("Remember Me"),
+                            const Spacer(),
                             TextButton(
                               onPressed: () {},
-                              child:const Text("Forget passowrd"),
+                              child: const Text("Forget passowrd"),
                             ),
                           ],
                         ),
-                        CustomElevatedButton(onPressed: (){
-                          if(formKey.currentState!.validate())
-                          {
-
-                          }
-                        },
-                        text: "Login",
-                        ),
-                      const  Row(
+                        isLoading
+                            ? const CircularProgressIndicator()
+                            : CustomElevatedButton(
+                              onPressed: () async {
+                                if (formKey.currentState!.validate()) {
+                                  isLoading = true;
+                                  setState(() {});
+                                  await signInWithEmailAndPasseord(
+                                    email,
+                                    password,
+                                  );
+                                  if (context.mounted) {
+                                    Navigator.pushNamedAndRemoveUntil(
+                                      context,
+                                      HomeView.routeName,
+                                      (route) => false,
+                                    );
+                                  }
+                                  isLoading = false;
+                                }
+                              },
+                              text: "Login",
+                            ),
+                        const Row(
                           children: [
                             Expanded(
                               child: Divider(thickness: 2, endIndent: 10),
@@ -125,10 +143,15 @@ class _LoginViewState extends State<LoginView> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                          const  Text("Dont have an account?"),
+                            const Text("Dont have an account?"),
                             TextButton(
-                              onPressed: () {},
-                              child:const Text("Sign Up"),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                  context,
+                                  SignupView.routeName,
+                                );
+                              },
+                              child: const Text("Sign Up"),
                             ),
                           ],
                         ),
@@ -144,4 +167,3 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 }
-
