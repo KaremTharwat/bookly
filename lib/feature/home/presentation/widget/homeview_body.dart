@@ -1,3 +1,4 @@
+import 'package:bookly/feature/home/presentation/widget/custom_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -5,8 +6,9 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [],
+    return const Padding(
+      padding: const EdgeInsets.all(12),
+      child: const Column(children: [CustomItem()]),
     );
   }
 }
