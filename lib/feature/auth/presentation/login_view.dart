@@ -5,6 +5,7 @@ import 'package:bookly/feature/auth/presentation/widget/custom_button.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_textformfeild.dart';
 import 'package:bookly/feature/home/presentation/home_view.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
+
 import 'package:flutter/material.dart';
 
 class LoginView extends StatefulWidget {
@@ -29,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
         child: Column(
           children: [
             const Image(image: AssetImage(Assets.login)),
-            const SizedBox(height: 30),
+            const SizedBox(height: 25),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.all(12),
@@ -139,7 +140,11 @@ class _LoginViewState extends State<LoginView> {
                             Expanded(child: Divider(thickness: 2, indent: 10)),
                           ],
                         ),
-                        Image.asset(Assets.googleIcon, width: 30, height: 30),
+                        GestureDetector(
+                          onTap: ()async{
+                            
+                          },
+                          child: Image.asset(Assets.googleIcon, width: 30, height: 30)),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

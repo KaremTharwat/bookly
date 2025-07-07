@@ -35,7 +35,6 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kPrimryColor,
         actions: [
           TextButton(
             onPressed: () {
@@ -77,7 +76,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
       bottomSheet: Container(
         padding:const EdgeInsets.symmetric(horizontal: 30),
         height: 60,
-        color: kPrimryColor,
+        color:ColorsApp.kPrimryColor,
         child: Row(
           children: [
             SmoothPageIndicator(

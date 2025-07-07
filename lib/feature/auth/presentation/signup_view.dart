@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/feature/auth/data/create_user_with_email_password.dart';
+import 'package:bookly/feature/auth/data/savedata.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_button.dart';
 import 'package:bookly/feature/auth/presentation/widget/custom_textformfeild.dart';
 import 'package:bookly/feature/home/presentation/home_view.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
-static const String routeName = "signup";
+  static const String routeName = "signup";
   @override
   State<SignupView> createState() => _SignupViewState();
 }
@@ -73,6 +74,10 @@ class _SignupViewState extends State<SignupView> {
                           email = value;
                           if (value!.isEmpty) {
                             return "Email is required";
+                          } else if (!RegExp(
+                            r'^[a-zA-Z0-9._%+-]+@gmail\.com$',
+                          ).hasMatch(value)) {
+                            return "please enter a valid gmail address";
                           }
                           return null;
                         },
@@ -122,6 +127,7 @@ class _SignupViewState extends State<SignupView> {
                       ),
                       CustomTextFormField(
                         validator: (value) {
+                          phone = value;
                           if (value!.isEmpty) {
                             return "phone is required";
                           }
@@ -149,6 +155,7 @@ class _SignupViewState extends State<SignupView> {
                                   password,
                                   context,
                                 );
+                                await saveData(email, phone);
                                 isLoading = false;
                                 if (context.mounted) {
                                   Navigator.pushNamedAndRemoveUntil(
