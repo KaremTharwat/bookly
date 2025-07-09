@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(scaffoldBackgroundColor:ColorsApp.kPrimryColor,appBarTheme:const AppBarTheme(backgroundColor: ColorsApp.kPrimryColor)),
+      theme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: ColorsApp.kPrimryColor,
+        appBarTheme: const AppBarTheme(backgroundColor: ColorsApp.kPrimryColor),
+      ),
       home: const HomeView(),
       routes: {
         LoginView.routeName: (context) => const LoginView(),

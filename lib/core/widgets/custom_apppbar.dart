@@ -1,5 +1,4 @@
 import 'package:bookly/core/utils/assets.dart';
-import 'package:bookly/core/utils/constans.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -15,10 +14,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Image.asset(Assets.logo),
       ),
       actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search, color: ColorsApp.whiteColor, size: 35),
-        ),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.search, size: 35)),
       ],
     );
   }

@@ -12,7 +12,7 @@ class CustomListViewBuilder extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
-          return const CustomItem();
+          return const CustomItem(height: 200);
         },
       ),
     );
