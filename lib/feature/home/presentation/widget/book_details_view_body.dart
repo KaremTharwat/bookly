@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/constans.dart';
 import 'package:bookly/core/utils/styles.dart';
+import 'package:bookly/core/widgets/custom_book_rating.dart';
 import 'package:bookly/feature/home/presentation/widget/custom_item.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class BookDetailsViewBody extends StatelessWidget {
             child: Text("Rudyard Kipling", style: Styles.textStyle18),
           ),
         ),
+        const CustomBookRating(),
         SizedBox(
           height: 100,
           child: ListView.builder(

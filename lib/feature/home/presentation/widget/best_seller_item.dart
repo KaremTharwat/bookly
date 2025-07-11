@@ -1,6 +1,6 @@
 import 'package:bookly/core/utils/constans.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/core/widgets/custom_rate_and_price.dart';
+import 'package:bookly/core/widgets/custom_book_rating.dart';
 import 'package:bookly/feature/home/presentation/book_details_view.dart';
 import 'package:bookly/feature/home/presentation/widget/custom_item.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ class BestSallerItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-         GoRouter.of(context).push(BookDetailsView.routeName);
+        GoRouter.of(context).push(BookDetailsView.routeName);
       },
       child: Padding(
         padding: const EdgeInsets.only(bottom: 10, top: 10),
@@ -42,7 +42,18 @@ class BestSallerItem extends StatelessWidget {
                     style: Styles.textStyle14.copyWith(color: Colors.grey),
                   ),
                 ),
-               const CustomRateAndPrice(),
+                Row(
+                  children: [
+                    Text(
+                      "19.99 \$",
+                      style: Styles.textStyle20.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const SizedBox(width: 40),
+                   const CustomBookRating(),
+                  ],
+                ),
               ],
             ),
           ],

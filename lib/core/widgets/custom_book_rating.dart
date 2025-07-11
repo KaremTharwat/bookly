@@ -2,8 +2,8 @@ import 'package:bookly/core/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CustomRateAndPrice extends StatelessWidget {
-  const CustomRateAndPrice({
+class CustomBookRating extends StatelessWidget {
+  const CustomBookRating({
     super.key,
   });
 
@@ -11,13 +11,6 @@ class CustomRateAndPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-          "19.99 \$",
-          style: Styles.textStyle20.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        const SizedBox(width: 40),
         const Icon(
           FontAwesomeIcons.solidStar,
           color: Colors.yellow,
