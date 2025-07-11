@@ -4,6 +4,7 @@ import 'package:bookly/feature/auth/presentation/login_view.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/custom_text.dart';
 import 'package:bookly/feature/onboarding/presentation/widgets/onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PageViewOnboarding extends StatefulWidget {
@@ -92,11 +93,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                   curve: Curves.easeInOut,
                 );
                 if (currentPage == 3) {
-                  Navigator.pushNamedAndRemoveUntil(
-                    context,
-                    LoginView.routeName,
-                    (route) => false,
-                  );
+                  
                 }
               },
               child: CircleAvatar(

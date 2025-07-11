@@ -1,6 +1,7 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:bookly/feature/onboarding/presentation/page_view_onboarding.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -13,11 +14,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        PageViewOnboarding.routeName,
-        (route) => false,
-      );
+      if(!mounted) return;
+      GoRouter.of(context).push(PageViewOnboarding.routeName);
     });
     super.initState();
   }

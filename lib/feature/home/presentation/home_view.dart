@@ -7,10 +7,6 @@ class HomeView extends StatelessWidget {
   static const String routeName = "home";
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(),
-      body:  HomeViewBody(),
-    );
+    return const Scaffold(appBar: CustomAppBar(), body: HomeViewBody());
   }
 }
-

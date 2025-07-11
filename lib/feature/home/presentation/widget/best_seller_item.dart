@@ -10,7 +10,7 @@ class BestSallerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.only(bottom: 10, top: 10),
       child: Row(
         children: [
           const CustomItem(height: 150),
@@ -70,4 +70,3 @@ class BestSallerItem extends StatelessWidget {
     );
   }
 }
-
