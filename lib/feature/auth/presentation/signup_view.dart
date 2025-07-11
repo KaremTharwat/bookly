@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
-  static const String routeName = "signup";
+  static const String routeName = "/signup";
   @override
   State<SignupView> createState() => _SignupViewState();
 }

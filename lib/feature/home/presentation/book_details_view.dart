@@ -3,11 +3,20 @@ import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
-static const String routeNAme = "bookDetails";
+  static const String routeName = "/bookDetails";
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: BookDetailsViewBody(),
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.shopping_cart_outlined),
+          ),
+        ],
+      ),
+      body: const BookDetailsViewBody(),
     );
   }
 }

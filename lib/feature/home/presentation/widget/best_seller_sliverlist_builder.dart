@@ -12,13 +12,5 @@ class BestSellerSliverListBuilder extends StatelessWidget {
         return const BestSallerItem();
       },
     );
-    //  Expanded(
-    //   child: ListView.builder(
-    //     itemCount: 10,
-    //     itemBuilder: (context, index) {
-    //       return const BestSallerItem();
-    //     },
-    //   ),
-    // );
   }
 }

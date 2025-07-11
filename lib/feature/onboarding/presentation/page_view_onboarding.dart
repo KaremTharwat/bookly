@@ -9,7 +9,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PageViewOnboarding extends StatefulWidget {
   const PageViewOnboarding({super.key});
-static const String routeName="PageViewOnboarding";
+static const String routeName="/PageViewOnboarding";
   @override
   State<PageViewOnboarding> createState() => _PageViewOnboardingState();
 }
@@ -39,7 +39,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, LoginView.routeName);
+              GoRouter.of(context).push(LoginView.routeName);
             },
             child:const CustomText(text: "Skip", fontSize: 22),
           ),
@@ -93,7 +93,7 @@ class _PageViewOnboardingState extends State<PageViewOnboarding> {
                   curve: Curves.easeInOut,
                 );
                 if (currentPage == 3) {
-                  
+                  GoRouter.of(context).push(LoginView.routeName);
                 }
               },
               child: CircleAvatar(

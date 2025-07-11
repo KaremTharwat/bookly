@@ -1,9 +1,8 @@
 import 'package:bookly/core/utils/assets.dart';
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
-
+class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomHomeAppBar({super.key});
   @override
   Widget build(BuildContext context) {
     return AppBar(

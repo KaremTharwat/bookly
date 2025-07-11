@@ -9,13 +9,13 @@ abstract class Styles {
     fontSize: 20,
     fontWeight: FontWeight.normal,
   );
-   static const textStyle16 = TextStyle(
+  static const textStyle16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,
   );
-   static const textStyle30 = TextStyle(
+  static const textStyle30 = TextStyle(
     fontSize: 30,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.bold,
   );
   static const textStyle14 = TextStyle(
     fontSize: 14,

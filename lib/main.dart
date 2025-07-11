@@ -1,10 +1,8 @@
 import 'package:bookly/core/utils/app_router.dart';
 import 'package:bookly/core/utils/constans.dart';
-import 'package:bookly/feature/home/presentation/home_view.dart';
 import 'package:bookly/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
