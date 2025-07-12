@@ -7,27 +7,30 @@ class CustomRowButtonAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        BookButtons(
-          text: "19.99 \$",
-          textColor: Colors.black,
-          backgroundColor: ColorsApp.whiteColor,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(12),
-            bottomLeft: Radius.circular(12),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 8),
+      child:  Row(
+        children: [
+          BookButtons(
+            text: "19.99 \$",
+            textColor: Colors.black,
+            backgroundColor: ColorsApp.whiteColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12),
+              bottomLeft: Radius.circular(12),
+            ),
           ),
-        ),
-        BookButtons(
-          text: "Free Review",
-          textColor: Colors.white,
-          backgroundColor: Color.fromARGB(255, 189, 39, 89),
-          borderRadius: BorderRadius.only(
-            topRight: Radius.circular(12),
-            bottomRight: Radius.circular(12),
+          BookButtons(
+            text: "Free Preview",
+            textColor: Colors.white,
+            backgroundColor: Color.fromARGB(255, 189, 39, 89),
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(12),
+              bottomRight: Radius.circular(12),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
