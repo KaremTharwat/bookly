@@ -1,5 +1,7 @@
 import 'package:bookly/core/utils/assets.dart';
+import 'package:bookly/feature/search/presentation/search_view.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomHomeAppBar({super.key});
@@ -14,7 +16,9 @@ class CustomHomeAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Image.asset(Assets.logo),
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.search, size: 35)),
+        IconButton(onPressed: () {
+          GoRouter.of(context).push(SearchView.routeName);
+        }, icon: const Icon(Icons.search, size: 35)),
       ],
     );
   }
