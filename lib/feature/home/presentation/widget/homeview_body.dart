@@ -17,7 +17,7 @@ class HomeViewBody extends StatelessWidget {
           SliverToBoxAdapter(
             child: Text("Best Seller", style: Styles.textStyle20),
           ),
-          BestSellerSliverListBuilder(),
+          SliverListBuilder(),
         ],
       ),
     );
