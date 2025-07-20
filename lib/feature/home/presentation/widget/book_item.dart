@@ -6,8 +6,8 @@ import 'package:bookly/feature/home/presentation/widget/custom_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BestSallerItem extends StatelessWidget {
-  const BestSallerItem({super.key});
+class BookItem extends StatelessWidget {
+  const BookItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class BestSallerItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 40),
-                   const CustomBookRating(),
+                    const CustomBookRating(),
                   ],
                 ),
               ],
@@ -62,4 +62,3 @@ class BestSallerItem extends StatelessWidget {
     );
   }
 }
-

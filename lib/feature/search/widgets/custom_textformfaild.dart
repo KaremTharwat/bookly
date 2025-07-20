@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomTextFormFaild extends StatelessWidget {
-  const CustomTextFormFaild({
-    super.key,
-  });
+class CustomTextFormField extends StatelessWidget {
+  const CustomTextFormField({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +11,7 @@ class CustomTextFormFaild extends StatelessWidget {
         decoration: InputDecoration(
           hintText: "Search",
           suffixIcon: const Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
         ),
       ),
     );
