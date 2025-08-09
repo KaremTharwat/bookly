@@ -10,27 +10,40 @@ class HomeRepoImplementation implements HomeRepo {
 
   HomeRepoImplementation(this.apiServices);
   @override
-  Future<Either<Failures, List<BookModel>>> fetchBestSellerBooks()async {
-    try{
-      var data =await  apiServices.getBooks("volumes?q=flowers+inauthor:keyes");
-      List<BookModel> books =[];
+  Future<Either<Failures, List<BookModel>>> fetchBestSellerBooks() async {
+    try {
+      var data = await apiServices.getBooks(
+        "volumes?Filtering=free-ebooks&q=subject:programming&Sorting=newest",
+      );
+      List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
-    }catch(e){
-      if(e is DioException)
-      {
-         return left(ServerFailure.fromDioError(e));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
       }
-     return left(ServerFailure(messageError: e.toString()));
+      return left(ServerFailure(messageError: e.toString()));
     }
-   
   }
 
   @override
-  fetchFeaturedBooks() {
-
-    throw UnimplementedError();
+  fetchFeaturedBooks() async {
+    try {
+      var data = await apiServices.getBooks(
+        "volumes?Filtering=free-ebooks&q=subject:programming",
+      );
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromJson(item));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(messageError: e.toString()));
+    }
   }
 }
